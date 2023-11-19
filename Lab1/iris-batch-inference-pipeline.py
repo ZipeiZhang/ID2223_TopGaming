@@ -5,8 +5,8 @@ LOCAL=True
 
 if LOCAL == False:
    stub = modal.Stub()
-   hopsworks_image = modal.Image.debian_slim().pip_install(["hopsworks","joblib","seaborn","sklearn==1.1.1","dataframe-image"])
-   @stub.function(image=hopsworks_image, schedule=modal.Period(days=1), secret=modal.Secret.from_name("HOPSWORKS_API_KEY"))
+   hopsworks_image = modal.Image.debian_slim().pip_install(["hopsworks","joblib","seaborn","scikit-learn==1.1.1","dataframe-image"])
+   @stub.function(image=hopsworks_image, schedule=modal.Period(days=1), secret=modal.Secret.from_name("id2223"))
    def f():
        g()
 
@@ -23,12 +23,14 @@ def g():
     import seaborn as sns
     import requests
 
-    project = hopsworks.login()
+    api = 'HeCatNGJxisb99Vf.ircWdTrkgbbZpBMU7iPN2zqDIwoTuaSX88LPeISIMJHuzP3icXixNd6JFcWUqakL'
+    project = hopsworks.login(api_key_value = api)
     fs = project.get_feature_store()
     
     mr = project.get_model_registry()
     model = mr.get_model("iris_model", version=1)
     model_dir = model.download()
+    print("model_dir:",model_dir)
     model = joblib.load(model_dir + "/iris_model.pkl")
     
     feature_view = fs.get_feature_view(name="iris", version=1)
@@ -69,8 +71,8 @@ def g():
        }
     monitor_df = pd.DataFrame(data)
     monitor_fg.insert(monitor_df, write_options={"wait_for_job" : False})
-    
-    history_df = monitor_fg.read()
+    history_df = monitor_fg.read(read_options={"use_hive": True})
+    # history_df = monitor_fg.read()
     # Add our prediction to the history, as the history_df won't have it - 
     # the insertion was done asynchronously, so it will take ~1 min to land on App
     history_df = pd.concat([history_df, monitor_df])
