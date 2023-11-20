@@ -1,7 +1,7 @@
 import os
 import modal
     
-LOCAL=True
+LOCAL=False
 
 if LOCAL == False:
    stub = modal.Stub()
@@ -22,18 +22,18 @@ def g():
     from matplotlib import pyplot
     import seaborn as sns
     import requests
-
+    model_version = 1
     api = 'HeCatNGJxisb99Vf.ircWdTrkgbbZpBMU7iPN2zqDIwoTuaSX88LPeISIMJHuzP3icXixNd6JFcWUqakL'
     project = hopsworks.login(api_key_value = api)
     fs = project.get_feature_store()
     
     mr = project.get_model_registry()
-    model = mr.get_model("iris_model", version=1)
+    model = mr.get_model("iris_model", version=model_version)
     model_dir = model.download()
     print("model_dir:",model_dir)
     model = joblib.load(model_dir + "/iris_model.pkl")
     
-    feature_view = fs.get_feature_view(name="iris", version=1)
+    feature_view = fs.get_feature_view(name="iris", version=model_version)
     batch_data = feature_view.get_batch_data()
     
     y_pred = model.predict(batch_data)
@@ -47,7 +47,7 @@ def g():
     dataset_api = project.get_dataset_api()    
     dataset_api.upload("./latest_iris.png", "Resources/images", overwrite=True)
    
-    iris_fg = fs.get_feature_group(name="iris", version=1)
+    iris_fg = fs.get_feature_group(name="iris", version=model_version)
     df = iris_fg.read() 
     #print(df)
     label = df.iloc[-offset]["variety"]
@@ -107,5 +107,5 @@ if __name__ == "__main__":
         g()
     else:
         with stub.run():
-            f()
+            f.remote()
 
