@@ -41,12 +41,12 @@ def g():
     fs = project.get_feature_store()
     
     mr = project.get_model_registry()
-    model = mr.get_model("wine_model", version=model_version)
+    model = mr.get_model("wine_model_2", version=model_version)
     model_dir = model.download()
     print("model_dir:",model_dir)
-    model = joblib.load(model_dir + "/wine_model.pkl")
+    model = joblib.load(model_dir + "/wine_model_2.pkl")
     
-    feature_view = fs.get_feature_view(name="wine", version=model_version)
+    feature_view = fs.get_feature_view(name="wine_2", version=1)
     batch_data = feature_view.get_batch_data()
     
     y_pred = model.predict(batch_data)
