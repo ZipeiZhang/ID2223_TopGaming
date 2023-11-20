@@ -1,27 +1,32 @@
-# ID2223_TopGaming
-Project Overview
-In this machine learning-oriented lab project, we delved deep into the Hopsworks platform, focusing particularly on the addition and management of API keys, the connection and operation with Hopsworks using Jupyter Notebook, and the impact of Gradio version updates on machine learning model presentation. The core contents of the project are as follows:
+# Lab Description for Machine Learning Project
 
-Hopsworks API Keys and Connection to Machine Learning Models:
+## Project Overview
 
-Learned how to add API keys in Hopsworks and applied them for accessing and operating machine learning models.
-Successfully connected to Hopsworks using Jupyter Notebook for training and testing machine learning models.
-Challenges in Creating and Configuring Machine Learning Projects:
+This machine learning-oriented lab project focuses on exploring the Hopsworks platform, emphasizing API key management, connections using Jupyter Notebook, and adapting to Gradio version updates.
 
-Created and configured new machine learning projects on Hopsworks, addressing challenges related to permissions, resource limitations, and configuration issues.
-Python Environment and Dependency Management for Machine Learning:
+### Key Areas of Focus
 
-Explored handling conflicts in Python virtual environments for machine learning packages and learned to manage project environments using venv.
-API Permissions and Integration with Machine Learning Models:
+#### Hopsworks API Keys and Machine Learning Model Integration
+- **Adding and Managing API Keys:** Methods for integrating API keys in Hopsworks for machine learning model operations.
+- **Jupyter Notebook Connection:** Utilizing Jupyter Notebook for connecting, training, and testing machine learning models in Hopsworks.
 
-Addressed authorization issues encountered while integrating the Hopsworks REST API with machine learning models.
-Impact of Gradio Version Updates on Machine Learning Model Presentation:
+#### Challenges in Machine Learning Project Setup
+- **Project Creation and Configuration:** Overcoming barriers such as permissions, resource limitations, and setup configurations on Hopsworks.
+- **Python Environment Management:** Handling package conflicts and environment management using `venv` for machine learning applications.
 
-Investigated the impact of Gradio library version changes on machine learning model presentations and learned how to adapt to these changes.
-Application of Hopsworks Feature Groups in Machine Learning:
+#### API Integration and Permissions
+- **Hopsworks REST API Challenges:** Addressing authorization issues within machine learning model integration.
 
-Explored adding or modifying Hopsworks feature groups in machine learning models and resolved related conflicts.
-Project Deliverables and Deadline
-Source Code: Submit the code for the machine learning models via a GitHub repository.
-Lab Description: Submit a README.md file in the root directory of the GitHub repository, detailing the nuances and challenges of the machine learning project.
-Gradio Applications: Submit public URLs for two Gradio applications, showcasing the functionality and performance of the machine learning models.
+#### Gradio Version Impacts
+- **Adapting to Gradio Updates:** Understanding and adapting to changes in Gradio library versions for effective machine learning model presentations.
+
+#### Feature Groups in Machine Learning
+- **Utilizing Hopsworks Feature Groups:** Implementing and resolving conflicts with feature groups in machine learning models.
+
+## Project Deliverables and Deadline
+
+- **Source Code:** All machine learning model codes are to be submitted via the designated GitHub repository.
+- **Lab Description:** A detailed README.md file outlining the project's challenges and learning experiences.
+- **Gradio Applications:** Public URLs for two Gradio applications demonstrating the machine learning models.
+- **Deadline:** Submission by Midnight, November 20th, 2023.
+
