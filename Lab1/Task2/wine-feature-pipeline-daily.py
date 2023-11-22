@@ -13,26 +13,6 @@ if LOCAL == False:
    def f():
        g()
 
-    
-
-# def generate_flower(name, sepal_len_max, sepal_len_min, sepal_width_max, sepal_width_min, 
-#                     petal_len_max, petal_len_min, petal_width_max, petal_width_min):
-#     """
-#     Returns a single iris flower as a single row in a DataFrame
-#     """
-#     import pandas as pd
-#     import random
-
-#     df = pd.DataFrame({ "sepal_length": [random.uniform(sepal_len_max, sepal_len_min)],
-#                        "sepal_width": [random.uniform(sepal_width_max, sepal_width_min)],
-#                        "petal_length": [random.uniform(petal_len_max, petal_len_min)],
-#                        "petal_width": [random.uniform(petal_width_max, petal_width_min)]
-#                       })
-#     df['variety'] = name
-
-#     return df
-
-
 def generate_wine():
     """
     Returns a single wine record as a single row in a DataFrame
@@ -50,48 +30,22 @@ def generate_wine():
         "sulphates": [random.uniform(0.3, 2.0)],
         "alcohol": [random.uniform(8, 15)],
         # Assuming binary classification of quality, e.g., 'bad' (0) or 'good' (1)
-        "quality": [random.choice([0, 1, 2])],
-        "type_white": [random.choice([0,1])]
+        "quality": [random.choice([0, 1, 2])]
     })
     return df
 
-
-# def get_random_iris_flower():
-#     """
-#     Returns a DataFrame containing one random iris flower
-#     """
-#     import pandas as pd
-#     import random
-
-#     virginica_df = generate_flower("Virginica", 8, 5.5, 3.8, 2.2, 7, 4.5, 2.5, 1.4)
-#     versicolor_df = generate_flower("Versicolor", 7.5, 4.5, 3.5, 2.1, 3.1, 5.5, 1.8, 1.0)
-#     setosa_df =  generate_flower("Setosa", 6, 4.5, 4.5, 2.3, 1.2, 2, 0.7, 0.3)
-
-#     # randomly pick one of these 3 and write it to the featurestore
-#     pick_random = random.uniform(0,3)
-#     if pick_random >= 2:
-#         iris_df = virginica_df
-#         print("Virginica added")
-#     elif pick_random >= 1:
-#         iris_df = versicolor_df
-#         print("Versicolor added")
-#     else:
-#         iris_df = setosa_df
-#         print("Setosa added")
-
-#     return iris_df
 
 
 def g():
     import hopsworks
     import pandas as pd
-    api = 'HeCatNGJxisb99Vf.ircWdTrkgbbZpBMU7iPN2zqDIwoTuaSX88LPeISIMJHuzP3icXixNd6JFcWUqakL'
+    api = '151p8WWCoctBzBeg.wRj1VwLA6wwjCS2aG7A51NsbhEbqVZ35wLl5g03b85EeetLKtpsO9bDOjy8DR2O3'
     project = hopsworks.login(api_key_value = api)
     fs = project.get_feature_store()
 
     wine_df = generate_wine()
 
-    wine_fg = fs.get_feature_group(name="wine",version=1)
+    wine_fg = fs.get_feature_group(name="wine_2",version=1)
     wine_fg.insert(wine_df)
 
 if __name__ == "__main__":
